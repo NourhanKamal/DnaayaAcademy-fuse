@@ -1,9 +1,16 @@
+<!-- Imports -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
 <div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
 
     <mat-drawer-container class="flex-auto h-full">
 
         <!-- Drawer -->
         <mat-drawer
+            style="width: 25% !important;"
             class="w-90 dark:bg-gray-900"
             [autoFocus]="false"
             [mode]="drawerMode"
@@ -16,9 +23,10 @@
                     [routerLink]="['..']">
                     <span class="inline-flex items-center">
                         <mat-icon
+                            style="color: #0078de !important;"
                             class="icon-size-5 text-current"
                             [svgIcon]="'heroicons_solid:arrow-sm-left'"></mat-icon>
-                        <span class="ml-1.5 font-medium leading-5">Back to courses</span>
+                        <span class="ml-1.5 font-medium leading-5" style="color: #0078de !important;">Back to courses</span>
                     </span>
                 </a>
                 <!-- Course category -->
@@ -29,19 +37,19 @@
                                     'text-green-800 bg-green-100 dark:text-green-50 dark:bg-green-500': category.slug === 'android',
                                     'text-pink-800 bg-pink-100 dark:text-pink-50 dark:bg-pink-500': category.slug === 'cloud',
                                     'text-amber-800 bg-amber-100 dark:text-amber-50 dark:bg-amber-500': category.slug === 'firebase'}">
-                        {{category.title}}
+                            Category Title
                     </div>
                 </ng-container>
                 <!-- Course title & description -->
-                <div class="mt-3 text-2xl font-semibold">{{course.title}}</div>
-                <div class="text-secondary">{{course.description}}</div>
+                <div class="mt-3 font-semibold"> Course Title </div>
+                <div class="text-secondary"> Course Description </div>
                 <!-- Course time -->
-                <div class="mt-6 flex items-center leading-5 text-md text-secondary">
+<!--                 <div class="mt-6 flex items-center leading-5 text-md text-secondary">
                     <mat-icon
                         class="icon-size-5 text-hint"
                         [svgIcon]="'heroicons_solid:clock'"></mat-icon>
                     <div class="ml-1.5">{{course.duration}} minutes</div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Steps -->
@@ -53,6 +61,7 @@
                             [class.current-step]="step.order === currentStep">
                             <ng-container *ngIf="!last">
                                 <div
+                                    style="background-color: #161c2d !important;"
                                     class="absolute top-6 left-4 w-0.5 h-full -ml-px"
                                     [ngClass]="{'bg-primary': step.order < currentStep,
                                                 'bg-gray-300 dark:bg-gray-600': step.order >= currentStep}"></div>
@@ -61,7 +70,8 @@
                                 class="relative flex items-start cursor-pointer"
                                 (click)="goToStep(step.order)">
                                 <div
-                                    class="flex flex-0 items-center justify-center w-8 h-8 rounded-full ring-2 ring-inset ring-transparent bg-card dark:bg-default"
+                                    style="background-color: #161c2d !important;"
+                                    class="flex flex-0 items-center justify-center w-8 h-8 rounded-full ring-inset ring-transparent bg-card dark:bg-default"
                                     [ngClass]="{'bg-primary dark:bg-primary text-on-primary group-hover:bg-primary-800': step.order < currentStep,
                                                 'ring-primary': step.order === currentStep,
                                                 'ring-gray-300 dark:ring-gray-600 group-hover:ring-gray-400': step.order > currentStep}">
@@ -73,11 +83,11 @@
                                     </ng-container>
                                     <!-- Step order, show if the step is the current step -->
                                     <ng-container *ngIf="step.order === currentStep">
-                                        <div class="text-md font-semibold text-primary dark:text-primary-500">{{step.order + 1}}</div>
+                                        <div class="text-md font-semibold dark:text-primary-500" style="color: #b7d4fa !important;">{{step.order + 1}}</div>
                                     </ng-container>
                                     <!-- Step order, show if the step is not completed -->
                                     <ng-container *ngIf="step.order > currentStep">
-                                        <div class="text-md font-semibold text-hint group-hover:text-secondary">{{step.order + 1}}</div>
+                                        <div class="text-md font-semibold group-hover:text-secondary" style="color: white !important">{{step.order + 1}}</div>
                                     </ng-container>
                                 </div>
                                 <div class="ml-4">
@@ -104,12 +114,12 @@
                     <mat-icon [svgIcon]="'heroicons_outline:arrow-sm-left'"></mat-icon>
                 </button>
                 <h2 class="ml-2.5 text-md sm:text-xl font-medium tracking-tight truncate">
-                    {{course.title}}
+                    Course Title
                 </h2>
             </div>
-            <mat-progress-bar
+<!--             <mat-progress-bar
                 class="hidden lg:block flex-0 h-0.5 w-full"
-                [value]="100 * (currentStep + 1) / course.totalSteps"></mat-progress-bar>
+                [value]="100 * (currentStep + 1) / course.totalSteps"></mat-progress-bar> -->
 
             <!-- Main -->
             <div
@@ -124,9 +134,106 @@
                     <ng-container *ngFor="let step of course.steps; trackBy: trackByFn">
                         <mat-tab>
                             <ng-template matTabContent>
-                                <div
-                                    class="prose prose-sm max-w-3xl mx-auto sm:my-2 lg:mt-4 p-6 sm:p-10 sm:py-12 rounded-2xl shadow overflow-hidden bg-card"
-                                    [innerHTML]="step.content"></div>
+                                <div style="display: block; text-align: -webkit-center;">
+                                    <div
+                                    style="margin: 0px !important; width: 100% !important;"
+                                    class="prose prose-sm max-w-3xl mx-auto sm:my-2 lg:mt-4 p-6 sm:p-10 sm:py-12 rounded-2xl shadow overflow-hidden bg-card">
+                                
+                                    <!-- Start Video -->
+                                    <div style="border-bottom: solid 10px #161c2d">
+                                        <vg-player >
+                                            <vg-overlay-play></vg-overlay-play>
+                                            <vg-buffering></vg-buffering>
+                                        
+                                            <vg-scrub-bar>
+                                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                                            </vg-scrub-bar>
+                                        
+                                            <vg-controls>
+                                                <vg-play-pause></vg-play-pause>
+                                                <vg-playback-button></vg-playback-button>
+                                        
+                                                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                                        
+                                                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                                        
+                                                <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+                                                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                                        
+                                                <vg-track-selector></vg-track-selector>
+                                                <vg-mute></vg-mute>
+                                                <vg-volume></vg-volume>
+                                        
+                                                <vg-fullscreen></vg-fullscreen>
+                                            </vg-controls>
+                                        
+                                            <video [vgMedia]="media" src="{{selectedVideo}}" #media id="singleVideo" preload="auto" crossorigin>
+                                            </video>
+                                        </vg-player>
+                                    </div>
+                                    <!-- /End Video -->
+
+                                    <!-- Start Comments -->
+                                    
+                                    <div class="container mt-5 mb-5">
+                                        <div class="d-flex justify-content-center row">
+                                            <div>
+                                                <div class="d-flex flex-row align-items-center add-comment p-2 bg-white rounded">
+                                                    <img class="rounded-circle" src="https://vigyanpratibha.in/wp-content/uploads/2019/11/dummy.jpg" style="width: 6%">
+                                                    <input type="text" class="form-control border-0 no-box-shadow ml-1" style="margin-right: 2%;" placeholder="Leave a comment...">
+                                                    <button class="btn btn-sm border-0 px-3" type="button" 
+                                                    style="color: white; background-color: #2b354f;" (click)="addComment()"> Comment </button>
+                                                </div>
+                                                <div class="p-3 bg-white mt-2 rounded">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="d-flex flex-row user">
+                                                            <img class="rounded-circle img-fluid img-responsive" src="https://vigyanpratibha.in/wp-content/uploads/2019/11/dummy.jpg" style="width: 10%; height: 50%;">
+                                                            <div class="d-flex flex-column ml-2">
+                                                                <span id="name" class="font-weight-bold">@Nick</span>
+                                                                <span class="day">1 day ago</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center px-3 heart border">
+                                                            <i class="fa fa-heart heart-icon"></i>
+                                                            <span class="ml-2">35</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-text text-justify mt-2" style="border: solid 1px #2b354f; padding: 0% 3% 0% 3%; font-size: 1.6vh;">
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 bg-white mt-2 rounded">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="d-flex flex-row user">
+                                                            <img class="rounded-circle img-fluid img-responsive" src="https://vigyanpratibha.in/wp-content/uploads/2019/11/dummy.jpg" style="width: 10%; height: 50%;">
+                                                            <div class="d-flex flex-column ml-2">
+                                                                <span id="name" class="font-weight-bold">@Samantha</span>
+                                                                <span class="day">2 days ago</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center px-3 heart border">
+                                                            <i class="fa fa-heart-o heart-icon"></i>
+                                                            <span class="ml-2">35</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-text text-justify mt-2" style="border: solid 1px #2b354f; padding: 0% 3% 0% 3%; font-size: 1.6vh;">
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-end align-items-center comment-buttons mt-2 text-right">
+                                                        <span class="mr-3 delete">Delete</span>
+                                                        <button style="color: white; background-color: #2b354f;" class="btn btn-success btn-sm border-0 px-3" type="button">Edit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /End Comments -->
+
+                                </div>
+                                </div>
+
                             </ng-template>
                         </mat-tab>
                     </ng-container>
@@ -134,8 +241,9 @@
 
                 <!-- Navigation - Desktop -->
                 <div class="z-10 sticky hidden lg:flex bottom-4 p-4">
-                    <div class="flex items-center justify-center mx-auto p-2 rounded-full shadow-lg bg-primary">
+                    <div class="flex items-center justify-center mx-auto p-2 rounded-full shadow-lg bg-primary" style="background-color: #161c2d !important;">
                         <button
+                            style="background-color: #161c2d !important;"
                             class="flex-0"
                             mat-flat-button
                             [color]="'primary'"
@@ -151,6 +259,7 @@
                             <span>{{course.totalSteps}}</span>
                         </div>
                         <button
+                            style="background-color: #161c2d !important;"
                             class="flex-0"
                             mat-flat-button
                             [color]="'primary'"
@@ -177,9 +286,9 @@
                     <span class="mx-0.5 text-hint">/</span>
                     <span>{{course.totalSteps}}</span>
                 </div>
-                <mat-progress-bar
+<!--                 <mat-progress-bar
                     class="flex-auto ml-6 rounded-full"
-                    [value]="100 * (currentStep + 1) / course.totalSteps"></mat-progress-bar>
+                    [value]="100 * (currentStep + 1) / course.totalSteps"></mat-progress-bar> -->
                 <button
                     class="ml-4"
                     mat-icon-button

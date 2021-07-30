@@ -10,6 +10,7 @@ import { AcademyService } from '../academy.service';
 @Component({
     selector       : 'academy-details',
     templateUrl    : './details.component.html',
+    styleUrls      : ['./details.component.scss'],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

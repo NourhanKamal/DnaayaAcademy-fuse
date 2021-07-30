@@ -11,6 +11,7 @@ import { AcademyService } from '../academy.service';
 @Component({
     selector       : 'academy-list',
     templateUrl    : './list.component.html',
+    styleUrls      : ['./list.component.scss'],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
